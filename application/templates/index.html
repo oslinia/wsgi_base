@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_file('style.css') }}">
+</head>
+<body>
+<table class="index">
+    <tr>
+        <td>file</td>
+        <td class="sep">:</td>
+        <td><a href="{{ file }}" target="_blank">{{ file }}</a></td>
+    </tr>
+    <tr>
+        <td>header</td>
+        <td class="sep">:</td>
+        <td><a href="{{ header }}" target="_blank">{{ header }}</a></td>
+    </tr>
+    <tr>
+        <td>cookie</td>
+        <td class="sep">:</td>
+        <td><a href="{{ cookie }}" target="_blank">{{ cookie }}</a></td>
+    </tr>
+    <tr>
+        <td>redirect</td>
+        <td class="sep">:</td>
+        <td>{{ redirect }}</td>
+    </tr>
+</table>
+</body>
+</html>

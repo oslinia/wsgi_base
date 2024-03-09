@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.index {
+    padding: 16px;
+}
+.index .sep {
+    padding: 0 4px;
+}
