@@ -3,36 +3,36 @@ import re
 
 
 class Http(object):
-    __slots__ = ('request', 'response')
+    __slots__ = ('_request', '_response')
 
     def __init__(self):
         from .. import request, response
 
-        self.request, self.response = request, response
-
-    def form(self, name: str):
-        value = self.request.form(name.strip(r'\'"'))
-
-        return '' if value is None else value
+        self._request, self._response = request, response
 
     def url_file(self, name: str):
-        return self.response.url_file(name.strip(r'\'"'))
+        return self._response.url_file(name.strip(r'\'"'))
 
     def url_for(self, args_kwargs: str):
         args, kwargs = list(), dict()
 
-        for item in (i.lstrip() for i in args_kwargs.split(',')):
+        for item in args_kwargs.split(','):
             if '=' in item:
-                k, v = item.split('=')
+                k, v = item.lstrip().split('=')
 
                 kwargs.update({k: v.strip(r'\'"')})
 
             else:
                 args.append(item.strip(r'\'"'))
 
-        url = self.response.url_for(*args, **kwargs)
+        url = self._response.url_for(*args, **kwargs)
 
         return str(url) if url is None else url
+
+    def form(self, name: str):
+        value = self._request.form(name.strip(r'\'"'))
+
+        return '' if value is None else value
 
 
 def context_replace(context: dict[str, str] | None, body: str):
